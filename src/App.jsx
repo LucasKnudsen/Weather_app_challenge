@@ -3,7 +3,8 @@ import axios from "axios"
 
 class App extends Component {
   state = {
-    geolocation: {}
+    geolocation: {},
+    location:{}
   }
 
   componentDidMount() {
@@ -26,8 +27,9 @@ class App extends Component {
 
   render() {
     return(
-      <div>
-        <h1>Sup</h1>
+      <div data-cy="weather-display">
+      <h1 data-cy='location'>{this.state.location.city}</h1>
+      <h2 data-cy='temp'>{this.state.location.temp}°C</h2>
       </div>
     )
   }
