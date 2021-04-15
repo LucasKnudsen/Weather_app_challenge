@@ -23,6 +23,7 @@ class App extends Component {
       this.setState({ geolocation: position.coords })
     })
   }
+  // bacon
 
   render() {
     return(
