@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 import { Container } from "semantic-ui-react"
 
+// weekend challenge
 class App extends Component {
   state = {
     geolocation: {},
