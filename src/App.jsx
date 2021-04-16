@@ -8,11 +8,15 @@ class App extends Component {
     location:{}
   }
 
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(async position => {
+  getGeolocation = new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(resolve, reject)
+  })
+
+  async componentDidMount() {
+      let geoloc = await this.getGeolocation
       let openCageKey= process.env.REACT_APP_OPEN_CAGE_KEY
       let openWeatherKey= process.env.REACT_APP_OPEN_WEATHER_KEY
-      let {latitude, longitude } = position.coords
+      let {latitude, longitude } = geoloc.coords
       let locationResponse = await axios.get(`https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${openCageKey}`)
       let weatherResponse = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely&appid=${openWeatherKey}`)
 
@@ -22,9 +26,8 @@ class App extends Component {
         weather: weatherResponse.data.current.weather[0].main
       }
       this.setState({ location: weatherInfo })
-      debugger
-      this.setState({ geolocation: position.coords })
-    })
+      
+      this.setState({ geolocation: geoloc.coords })
   }
 
   render() {
