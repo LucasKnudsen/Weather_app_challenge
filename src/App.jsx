@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container } from "semantic-ui-react";
+import { Container, Radio } from "semantic-ui-react";
 import Weeklyweather from "./components/Weeklyweather.jsx";
 
 // weekend challenge
@@ -8,7 +8,8 @@ class App extends Component {
   state = {
     geolocation: {},
     location: {},
-    dailyWeather:{}
+    dailyWeather:{},
+    open: false
   };
 
   getGeolocation = new Promise((resolve, reject) => {
@@ -26,7 +27,7 @@ class App extends Component {
     let weatherResponse = await axios.get(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&exclude=minutely&appid=${openWeatherKey}`
     );
-    debugger;
+    // debugger;
     let weatherInfo = {
       city: locationResponse.data.results[0].components.postal_city
         ? locationResponse.data.results[0].components.postal_city
@@ -51,7 +52,11 @@ class App extends Component {
           <h2 data-cy="temp">{this.state.location.temp}°C</h2>
           <h2 data-cy="weather-type">{this.state.location.weather}</h2>
           <h2 data-cy="timezone">{this.state.location.timezone}</h2>
-          <Weeklyweather dailyWeather={dailyWeather} />
+          <Container>
+            <Radio toggle onClick data-cy="seven-days">
+              <Weeklyweather  dailyWeather={dailyWeather} />
+            </Radio>
+          </Container>
         </Container>
       </>
     );

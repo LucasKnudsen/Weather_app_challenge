@@ -37,6 +37,15 @@ describe("Shows seven days forecast", () => {
     cy.get("[data-cy=seven-days-list]").within(() => {
       cy.get("[data-cy=seven-days-list-items]")
       .first()
+      .find("[data-cy=week-day]")
+      .should("contain", "Fri")
+    })
+  })
+
+  it("shows the seven days daily temp", () => {
+    cy.get("[data-cy=seven-days-list]").within(() => {
+      cy.get("[data-cy=seven-days-list-items]")
+      .first()
       .find("[data-cy=daily-temp]")
       .should("contain", "9.51°C")
     })
