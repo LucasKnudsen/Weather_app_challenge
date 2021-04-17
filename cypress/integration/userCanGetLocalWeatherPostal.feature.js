@@ -32,32 +32,5 @@ describe("weather info for user's location", () => {
       cy.get("[data-cy=weather-type]").should("contain", "Clouds");
     });
   });
-
-  it("is expected to show 7 day forecast when seven days button is clicked", () => {
-    cy.get("[data-cy=weather-display]").within(() => {
-      cy.get("[data-cy=seven-days-list]").should("not.exist")
-      cy.get("[data-cy=seven-days]").click()
-      cy.get("[data-cy=seven-days-list]").children().should("have.length", 7)
-    })
-  })
-
-  it("shows the seven days daily temp", () => {
-    cy.get("[data-cy=seven-days-list]").within(() => {
-      cy.get("[data-cy=seven-days-list-items]")
-      .first()
-      .find("[data-cy=daily-temp]")
-      .should("contain", "9.51°C")
-    })
-  })
-
-  it("shows the seven days daily weather type", () => {
-    cy.get("[data-cy=seven-days-list]").within(() => {
-      cy.get("[data-cy=seven-days-list-items]")
-      .first()
-      .find("[data-cy=daily-weather]")
-      .should("contain", "Clouds")
-    })
-  })
-
   
 });
