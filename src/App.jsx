@@ -8,6 +8,7 @@ class App extends Component {
   state = {
     geolocation: {},
     location: {},
+    dailyWeather:{}
   };
 
   getGeolocation = new Promise((resolve, reject) => {
@@ -41,6 +42,7 @@ class App extends Component {
   }
 
   render() {
+    const { dailyWeather } = this.state;
     return (
       <>
         <Container data-cy="weather-display" fluid>
@@ -49,7 +51,7 @@ class App extends Component {
           <h2 data-cy="temp">{this.state.location.temp}°C</h2>
           <h2 data-cy="weather-type">{this.state.location.weather}</h2>
           <h2 data-cy="timezone">{this.state.location.timezone}</h2>
-          <Weeklyweather/>
+          <Weeklyweather dailyWeather={dailyWeather} />
         </Container>
       </>
     );
