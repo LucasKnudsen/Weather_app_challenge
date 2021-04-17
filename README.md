@@ -16,7 +16,7 @@ As a user
 In order to know what timezone im in
 I want to see my time zone area
 
-As a developer
+ As a developer
 In order to show weather
 I want users to enable location
 

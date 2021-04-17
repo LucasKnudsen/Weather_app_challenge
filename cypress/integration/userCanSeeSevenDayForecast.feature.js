@@ -1,4 +1,4 @@
-describe("weather info for user's location", () => {
+describe("Shows seven days forecast", () => {
     
   beforeEach(() => {
     cy.intercept("https://api.openweathermap.org/data/2.5/**", {
@@ -8,7 +8,7 @@ describe("weather info for user's location", () => {
       fixture: "location_response.json",
     });
   });
-  it("is expected to be displayed on initial render", () => {
+  it("loads fake data", () => {
     cy.visit("/", {
       onBeforeLoad(window) {
         const stubLocation = {
@@ -24,15 +24,7 @@ describe("weather info for user's location", () => {
         );
       },
     });
-
-    cy.get("[data-cy=weather-display]").within(() => {
-      cy.get("[data-cy=temp]").should("contain", "17°C");
-      cy.get("[data-cy=location]").should("contain", "Virum");
-      cy.get("[data-cy=timezone]").should("contain", "CEST" )
-      cy.get("[data-cy=weather-type]").should("contain", "Clouds");
-    });
   });
-
   it("is expected to show 7 day forecast when seven days button is clicked", () => {
     cy.get("[data-cy=weather-display]").within(() => {
       cy.get("[data-cy=seven-days-list]").should("not.exist")
@@ -58,6 +50,4 @@ describe("weather info for user's location", () => {
       .should("contain", "Clouds")
     })
   })
-
-  
 });
