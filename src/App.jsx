@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Container, Radio } from "semantic-ui-react";
 import Weeklyweather from "./components/Weeklyweather.jsx";
+import Hourlyweather from './components/Hourlyweather.jsx'
 
 // weekend challenge
 class App extends Component {
@@ -47,6 +48,7 @@ class App extends Component {
 
   render() {
     const { dailyWeather } = this.state;
+    const{hourlyWeather} = this.state;
     return (
       <>
         <Container data-cy="weather-display" fluid>
@@ -57,6 +59,7 @@ class App extends Component {
           <h2 data-cy="timezone">{this.state.location.timezone}</h2>
           <Container>
               <Weeklyweather dailyWeather={dailyWeather} />
+              <Hourlyweather hourlyWeather={hourlyWeather} />
           </Container>
         </Container>
       </>
