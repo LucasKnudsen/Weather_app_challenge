@@ -27,8 +27,6 @@ describe("Shows seven days forecast", () => {
   });
   it("is expected to show 7 day forecast when seven days button is clicked", () => {
     cy.get("[data-cy=weather-display]").within(() => {
-      cy.get("[data-cy=seven-days-list]").should("not.exist")
-      cy.get("[data-cy=seven-days]").click()
       cy.get("[data-cy=seven-days-list]").children().should("have.length", 7)
     })
   })

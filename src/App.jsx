@@ -37,9 +37,10 @@ class App extends Component {
       timezone:
         locationResponse.data.results[0].annotations.timezone.short_name,
     };
-    this.setState({ location: weatherInfo });
-    this.setState({ dailyWeather: weatherResponse.data.daily });
-    this.setState({ geolocation: geoloc.coords });
+    this.setState({ 
+    location: weatherInfo,
+    dailyWeather: weatherResponse.data.daily,
+    geolocation: geoloc.coords });
   }
 
   render() {
@@ -53,9 +54,7 @@ class App extends Component {
           <h2 data-cy="weather-type">{this.state.location.weather}</h2>
           <h2 data-cy="timezone">{this.state.location.timezone}</h2>
           <Container>
-            <Radio toggle onClick data-cy="seven-days">
-              <Weeklyweather  dailyWeather={dailyWeather} />
-            </Radio>
+              <Weeklyweather dailyWeather={dailyWeather} />
           </Container>
         </Container>
       </>
