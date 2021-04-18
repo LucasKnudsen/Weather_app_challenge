@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid,Header} from "semantic-ui-react";
+import { Grid,Header, Segment} from "semantic-ui-react";
 
 
 const Hourlyweather  = ({ hourlyWeather }) => {
@@ -9,18 +9,20 @@ const Hourlyweather  = ({ hourlyWeather }) => {
     
     hourlyWeatherList.push(
       <Grid.Column data-cy="twenty-four-list-items" key={i} textAlign="center" >
-        <Header.Content data-cy="hour" >
-        {hoursList[new Date(hourlyWeather[i].dt * 1000).getHours()]}
-        </Header.Content>
-        <Header.Content data-cy="hourly-weather" >{hourlyWeather[i].weather[0].description}</Header.Content>
-        <Header.Content data-cy="hourly-temp" >{hourlyWeather[i].temp}°C</Header.Content>
+        <Segment>
+          <Header.Content data-cy="hour" >
+          {hoursList[new Date(hourlyWeather[i].dt * 1000).getHours()]}
+          </Header.Content>
+          <Header.Content data-cy="hourly-weather" >{hourlyWeather[i].weather[0].description}</Header.Content>
+          <Header.Content data-cy="hourly-temp" >{hourlyWeather[i].temp}°C</Header.Content>
+        </Segment>
       </Grid.Column>
     );
   }
 
   return (
     <Grid columns={24} divided >
-      <Grid.Row  data-cy="twenty-four-list">{hourlyWeatherList}</Grid.Row>
+      <Grid.Row data-cy="twenty-four-list">  {hourlyWeatherList}</Grid.Row>
     </Grid>
   );
 };

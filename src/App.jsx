@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container } from "semantic-ui-react";
+import { Container, Image, Header, Segment, Grid } from "semantic-ui-react";
 import Weeklyweather from "./components/Weeklyweather.jsx";
 import Hourlyweather from './components/Hourlyweather.jsx'
 
@@ -10,7 +10,6 @@ class App extends Component {
     location: {},
     dailyWeather: {},
     hourlyWeather: {},
-    open: false
   };
 
   getGeolocation = new Promise((resolve, reject) => {
@@ -51,11 +50,28 @@ class App extends Component {
     return (
       <>
         <Container data-cy="weather-display" fluid>
-          {/* <Image class="background" src="https://images.unsplash.com/photo-1508020963102-c6c723be5764?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3450&q=80" fluid alt="clouds"/> */}
-          <h1 data-cy="location">{city}</h1>
-          <h2 data-cy="temp">{temp}°C</h2>
-          <h2 data-cy="weather-type">{weather}</h2>
-          <h2 data-cy="timezone">{timezone}</h2>
+          <Header as="h1" textAlign="center" >
+            <Header.Content data-cy="location">
+              {city}
+            </Header.Content>
+          </Header>
+          <Segment float id="opaci" >
+            <Grid verticalAlign="middle" columns={4} centered textAlign="center">
+              <Grid.Row>
+                <Grid.Column>
+                  <Header textAlign="center" data-cy="temp">{temp}°C</Header>
+                </Grid.Column>
+                <Grid.Column>
+                  <Header textAlign="center" data-cy="today" >Today</Header>
+                  <br />
+                  <Header textAlign="center" data-cy="timezone" >Time Zone: {timezone}</Header>
+                </Grid.Column>
+                <Grid.Column>
+                  <Header textAlign="center" data-cy="weather-type">{weather}</Header>
+                </Grid.Column>
+              </Grid.Row>
+            </Grid>
+          </Segment>
           <Container>
               <Weeklyweather dailyWeather={dailyWeather} />
               <Hourlyweather hourlyWeather={hourlyWeather} />
