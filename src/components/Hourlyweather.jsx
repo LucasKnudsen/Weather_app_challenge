@@ -42,9 +42,13 @@ const Hourlyweather = ({ hourlyWeather }) => {
   }
 
   return (
-    <Grid columns={24} divided>
-      <Grid.Row>{hourlyWeatherList}</Grid.Row>
-    </Grid>
+    <div>
+      <Grid columns="12" row="2" id="hou" divided>
+        <Grid.Row  data-cy="twenty-four-list">
+          {hourlyWeatherList}
+        </Grid.Row>
+      </Grid>
+    </div>
   );
 };
 

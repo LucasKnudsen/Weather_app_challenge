@@ -12,7 +12,7 @@ const Weeklyweather = ({ dailyWeather }) => {
         <Header.Content data-cy="week-day" className="days">
           {days[new Date(dailyWeather[i].dt * 1000).getDay()]}
         </Header.Content>
-        <Header.Content data-cy="daily-weather">{dailyWeather[i].weather[0].main}</Header.Content>
+        <Header.Content data-cy="daily-weather">{dailyWeather[i].weather[0].description}</Header.Content>
         <Header.Content data-cy="daily-temp">{dailyWeather[i].temp.day}°C</Header.Content>
       </Grid.Column>
     );

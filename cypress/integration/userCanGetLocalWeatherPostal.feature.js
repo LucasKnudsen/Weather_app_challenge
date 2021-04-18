@@ -29,7 +29,8 @@ describe("weather info for user's location", () => {
       cy.get("[data-cy=temp]").should("contain", "17°C");
       cy.get("[data-cy=location]").should("contain", "Virum");
       cy.get("[data-cy=timezone]").should("contain", "CEST" )
-      cy.get("[data-cy=weather-type]").should("contain", "Clouds");
+      cy.get("[data-cy=today]").should("contain", "Today");
+      cy.get("[data-cy=weather-type]").should("contain", "overcast clouds");
     });
   });
   
