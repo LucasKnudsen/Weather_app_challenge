@@ -8,7 +8,8 @@ class App extends Component {
   state = {
     geolocation: {},
     location: {},
-    dailyWeather:{},
+    dailyWeather: {},
+    hourlyWeather: {},
     open: false
   };
 
@@ -40,6 +41,7 @@ class App extends Component {
     this.setState({ 
     location: weatherInfo,
     dailyWeather: weatherResponse.data.daily,
+    hourlyWeather: weatherResponse.data.hourly,
     geolocation: geoloc.coords });
   }
 

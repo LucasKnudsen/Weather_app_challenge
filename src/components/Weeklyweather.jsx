@@ -1,7 +1,6 @@
 import React from "react";
 import { Grid,Header} from "semantic-ui-react";
 
-// weekend challenge
 const Weeklyweather = ({ dailyWeather }) => {
   const forecastList = [];
   for (let i = 1; i < dailyWeather.length; i++) {
