@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Image, Header, Segment, Grid } from "semantic-ui-react";
+import { Container, Image, Header, Segment, Grid, Icon } from "semantic-ui-react";
 import Weeklyweather from "./components/Weeklyweather.jsx";
 import Hourlyweather from './components/Hourlyweather.jsx'
 
@@ -50,21 +50,21 @@ class App extends Component {
     return (
       <>
         <Container data-cy="weather-display" fluid>
-          <Header as="h1" textAlign="center" >
-            <Header.Content data-cy="location">
+          <Header as="h1" textAlign="center" id="head" >
+            <Header.Content data-cy="location"><Icon size="large" name="building outline"/>
               {city}
             </Header.Content>
           </Header>
           <Segment float id="opaci" >
-            <Grid verticalAlign="middle" columns={4} centered textAlign="center">
+            <Grid verticalAlign="middle" columns={4} centered textAlign="left">
               <Grid.Row>
                 <Grid.Column>
-                  <Header textAlign="center" data-cy="temp">{temp}°C</Header>
+                  <Header textAlign="center" data-cy="temp"><Icon size="large" name="thermometer full"/>{temp}°C</Header>
                 </Grid.Column>
                 <Grid.Column>
                   <Header textAlign="center" data-cy="today" >Today</Header>
                   <br />
-                  <Header textAlign="center" data-cy="timezone" >Time Zone: {timezone}</Header>
+                  <Header textAlign="center" data-cy="timezone" ><Icon size="large" name="world"/>Time Zone: {timezone}</Header>
                 </Grid.Column>
                 <Grid.Column>
                   <Header textAlign="center" data-cy="weather-type">{weather}</Header>

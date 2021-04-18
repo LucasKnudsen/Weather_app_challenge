@@ -3,6 +3,7 @@ import { Grid,Header} from "semantic-ui-react";
 
 // weekend challenge
 const Weeklyweather = ({ dailyWeather }) => {
+  
   const forecastList = [];
   for (let i = 1; i < dailyWeather.length; i++) {
     const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -19,7 +20,7 @@ const Weeklyweather = ({ dailyWeather }) => {
   }
 
   return (
-    <Grid columns={7} divided >
+    <Grid columns={7} divided id="hou" >
       <Grid.Row data-cy="seven-days-list" >{forecastList}</Grid.Row>
     </Grid>
   );
