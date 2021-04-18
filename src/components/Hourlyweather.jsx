@@ -43,7 +43,7 @@ const Hourlyweather = ({ hourlyWeather }) => {
 
   return (
     <div>
-      <Grid columns="12" row="2" id="hou" divided>
+      <Grid divided="vertically" celled columns={12}>
         <Grid.Row data-cy="twenty-four-list">{hourlyWeatherList}</Grid.Row>
       </Grid>
     </div>
