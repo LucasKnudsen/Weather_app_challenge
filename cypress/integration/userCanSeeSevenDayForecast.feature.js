@@ -54,7 +54,7 @@ describe("Shows seven days forecast", () => {
       cy.get("[data-cy=seven-days-list-items]")
       .first()
       .find("[data-cy=daily-weather]")
-      .should("contain", "Clouds")
+      .should("contain", "overcast clouds")
     })
   })
 });

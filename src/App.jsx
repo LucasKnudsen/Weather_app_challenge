@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Container, Radio } from "semantic-ui-react";
+import { Container } from "semantic-ui-react";
 import Weeklyweather from "./components/Weeklyweather.jsx";
 import Hourlyweather from './components/Hourlyweather.jsx'
 
-// weekend challenge
 class App extends Component {
   state = {
     geolocation: {},
@@ -35,7 +34,7 @@ class App extends Component {
         ? locationResponse.data.results[0].components.postal_city
         : locationResponse.data.results[0].components.city,
       temp: weatherResponse.data.current.temp,
-      weather: weatherResponse.data.current.weather[0].main,
+      weather: weatherResponse.data.current.weather[0].description,
       timezone:
         locationResponse.data.results[0].annotations.timezone.short_name,
     };
@@ -47,16 +46,16 @@ class App extends Component {
   }
 
   render() {
-    const { dailyWeather } = this.state;
-    const{hourlyWeather} = this.state;
+    const { dailyWeather, hourlyWeather } = this.state;
+    const{city, temp, weather, timezone} = this.state.location;
     return (
       <>
         <Container data-cy="weather-display" fluid>
           {/* <Image class="background" src="https://images.unsplash.com/photo-1508020963102-c6c723be5764?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3450&q=80" fluid alt="clouds"/> */}
-          <h1 data-cy="location">{this.state.location.city}</h1>
-          <h2 data-cy="temp">{this.state.location.temp}°C</h2>
-          <h2 data-cy="weather-type">{this.state.location.weather}</h2>
-          <h2 data-cy="timezone">{this.state.location.timezone}</h2>
+          <h1 data-cy="location">{city}</h1>
+          <h2 data-cy="temp">{temp}°C</h2>
+          <h2 data-cy="weather-type">{weather}</h2>
+          <h2 data-cy="timezone">{timezone}</h2>
           <Container>
               <Weeklyweather dailyWeather={dailyWeather} />
               <Hourlyweather hourlyWeather={hourlyWeather} />

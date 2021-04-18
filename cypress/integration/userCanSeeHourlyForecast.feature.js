@@ -37,6 +37,15 @@ describe("Shows 24h forecast", () => {
     cy.get("[data-cy=twenty-four-list]").within(() => {
       cy.get("[data-cy=twenty-four-list-items]")
       .first()
+      .find("[data-cy=hour]")
+      .should("contain", "13")
+    })
+  })
+
+  it("shows hourly temp", () => {
+    cy.get("[data-cy=twenty-four-list]").within(() => {
+      cy.get("[data-cy=twenty-four-list-items]")
+      .first()
       .find("[data-cy=hourly-temp]")
       .should("contain", "9.38°C")
     })
@@ -47,7 +56,7 @@ describe("Shows 24h forecast", () => {
       cy.get("[data-cy=twenty-four-list-items]")
       .first()
       .find("[data-cy=hourly-weather]")
-      .should("contain", "Clouds")
+      .should("contain", "overcast clouds")
     })
   })
 });
