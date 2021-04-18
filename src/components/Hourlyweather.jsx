@@ -44,7 +44,7 @@ const Hourlyweather = ({ hourlyWeather }) => {
   return (
     <div>
       <Grid divided="vertically" celled columns={12}>
-        <Grid.Row data-cy="twenty-four-list">{hourlyWeatherList}</Grid.Row>
+        <Grid.Row id="opaci" color="black" inverted data-cy="twenty-four-list">{hourlyWeatherList}</Grid.Row>
       </Grid>
     </div>
   );
