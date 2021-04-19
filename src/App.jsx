@@ -16,6 +16,7 @@ class App extends Component {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 
+
   async componentDidMount() {
     let geoloc = await this.getGeolocation;
     let openCageKey = process.env.REACT_APP_OPEN_CAGE_KEY;
